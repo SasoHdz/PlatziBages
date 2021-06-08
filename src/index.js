@@ -8,7 +8,11 @@ import Badge from './components/Badge';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
- <Badge />,
+ <Badge firstName="Mariana" 
+ lastName="Menocal" 
+ avatarUrl="https://www.gravatar.com/avatar?d=identicon"
+ jobTitle="Product Manager" 
+ twitter="SasoHdz"/>,
   document.getElementById('root')
 );
 
