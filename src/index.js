@@ -3,16 +3,12 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import './global.css';
-import Badge from './components/Badge';
+import BadgeNew from './pages/BadgeNew';
 
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
- <Badge firstName="Mariana" 
- lastName="Menocal" 
- avatarUrl="https://www.gravatar.com/avatar?d=identicon"
- jobTitle="Product Manager" 
- twitter="SasoHdz"/>,
+ <BadgeNew />,
   document.getElementById('root')
 );
 
