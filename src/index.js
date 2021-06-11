@@ -4,11 +4,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import './global.css';
 import BadgeNew from './pages/BadgeNew';
+import Badges from './pages/Badges';
 
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
- <BadgeNew />,
+ <Badges />,
   document.getElementById('root')
 );
 
