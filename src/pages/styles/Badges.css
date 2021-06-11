@@ -27,4 +27,6 @@
     display: flex;
     justify-content: flex-end;
     margin-bottom: 1rem;
+    position: relative;
+    right: 25%;
   }
