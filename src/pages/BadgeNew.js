@@ -1,9 +1,10 @@
 import React from 'react';
 
 import './styles/BadgeNew.css';
-import header from '../components/images/badge-header.svg';
+import header from '../components/images/platziconf-logo.svg';
 import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
+import api from '../api';
 
 class BadgeNew extends React.PureComponent{
 
@@ -26,30 +27,45 @@ class BadgeNew extends React.PureComponent{
         },
       })
     }
+
+    handleSubmit = async e => {
+      e.preventDefault();
+      this.setState({ loading: false, error: null });
+
+      try {
+        await api.badges.create(this.state.form);
+        this.setState({ loading: false });
+      }catch(error){
+        this.setState({ loading: false, error: error});
+      }
+    }
+
     render (){
         return (
             <React.Fragment>
              
               <div className="BadgeNew__hero">
-                <img className="img-fluid" src={header} alt="Logo" />
+                <img className="BadgeNew__hero-img img-fluid" src={header} alt="Logo" />
               </div>
       
               <div className="container">
                 <div className="row">
                   <div className="col-6">
-                    <Badge
-                      firstName={this.state.form.firstName}
-                      lastName={this.state.form.lastName}
-                      twitter={this.state.form.twitter}
-                      jobTitle={this.state.form.jobTitle}
-                      avatarUrl="https://scontent.fqro1-1.fna.fbcdn.net/v/t1.6435-9/186369854_918866242020897_2260182689203836141_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeHkL_3213g0xd3cHo3GbzFnrgJevSH_FgauAl69If8WBlcvBsSeouTzRFBwjnSVm0daqPyCybmVGBLPGSTX-rsK&_nc_ohc=yv4dIO3cflMAX8XO6Ie&tn=B_zKFSPla6C3ZdpL&_nc_ht=scontent.fqro1-1.fna&oh=6fc603851a06bfd86652e02969b413d6&oe=60E5F632"
-                    />
+                  <Badge
+                    firstName={this.state.form.firstName || 'FIRST_NAME'}
+                    lastName={this.state.form.lastName || 'LAST_NAME'}
+                    twitter={this.state.form.twitter || 'twitter'}
+                    jobTitle={this.state.form.jobTitle || 'JOB_TITLE'}
+                    email={this.state.form.email || 'EMAIL'}
+                    avatarUrl="https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon"
+                  />
                   </div>
       
                   <div className="col-6">
                     <BadgeForm 
-                      onChange={this.handleChange}
-                      formValues={this.state.form}
+                       onChange={this.handleChange}
+                       onSubmit={this.handleSubmit}
+                       formValues={this.state.form}
                     />
                   </div>
                 </div>
