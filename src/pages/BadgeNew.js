@@ -5,16 +5,21 @@ import header from '../components/images/platziconf-logo.svg';
 import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
 import api from '../api';
+import PageLoading from '../components/PageLoading';
 
 class BadgeNew extends React.PureComponent{
 
-    state = { form: {
-      firstName: '',
-      lastName: '',
-      jobTitle: '',
-      email: '',
-      twitter: '',
-    }};
+    state = { 
+      loading: false,
+      error: null,
+      form: {
+        firstName: '',
+        lastName: '',
+        jobTitle: '',
+        email: '',
+        twitter: '',
+      },
+   };
 
     handleChange = e => {
       //const nextForm = this.state.form;
@@ -30,17 +35,24 @@ class BadgeNew extends React.PureComponent{
 
     handleSubmit = async e => {
       e.preventDefault();
-      this.setState({ loading: false, error: null });
+      this.setState({ loading: true, error: null });
 
       try {
         await api.badges.create(this.state.form);
         this.setState({ loading: false });
+
+        this.props.history.push('/badges');
       }catch(error){
         this.setState({ loading: false, error: error});
       }
     }
 
     render (){
+
+        if(this.state.loading){
+          return <PageLoading />;
+        }
+
         return (
             <React.Fragment>
              
@@ -66,6 +78,7 @@ class BadgeNew extends React.PureComponent{
                        onChange={this.handleChange}
                        onSubmit={this.handleSubmit}
                        formValues={this.state.form}
+                       error={this.state.error}
                     />
                   </div>
                 </div>
