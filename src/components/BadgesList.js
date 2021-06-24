@@ -19,20 +19,22 @@ class BadgesList extends React.Component {
             {this.props.badges.map((badge) => {
                 return (
                     <li className="badge" key={badge.id}>
-                        <div className="badge__container">
-                            <Gravatar 
-                                className="badge__container-avatar"
-                                email={badge.email}
-                                alt={`${badge.firstName} ${badge.lastName}`} 
-                            />
-                            <div className="badge__container-info">
-                                <p className="name">
-                                    {badge.firstName} {badge.lastName}
-                                </p>
-                                <p><img className="twitter-icon" src="https://img.icons8.com/fluent/48/000000/twitter.png" alt="icono twitter"/><a className="twitter" href="/">@{badge.twitter}</a></p>
-                                <p className="jobTitle">{badge.jobTitle}</p>
+                        <Link className="text-reset text-decoration-none" to={`/badges/${badge.id}/edit`}>
+                            <div className="badge__container">
+                                <Gravatar 
+                                    className="badge__container-avatar"
+                                    email={badge.email}
+                                    alt={`${badge.firstName} ${badge.lastName}`} 
+                                />
+                                <div className="badge__container-info">
+                                    <p className="name">
+                                        {badge.firstName} {badge.lastName}
+                                    </p>
+                                    <p><img className="twitter-icon" src="https://img.icons8.com/fluent/48/000000/twitter.png" alt="icono twitter"/><a className="twitter" href="/">@{badge.twitter}</a></p>
+                                    <p className="jobTitle">{badge.jobTitle}</p>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </li>
                 )
             })}
