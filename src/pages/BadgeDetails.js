@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Link } from 'react-router-dom';
 
 import confLogo from '../components/images/platziconf-logo.svg';
@@ -33,7 +34,12 @@ function BadgeDetails (props) {
                             <h2>Actions</h2>
                             <div>
                                 <div><Link className="btn btn-primary mb-4" to={`/badges/${badge.id}/edit`}> Edit </Link></div>
-                                <div><button className="btn btn-danger">Delete</button></div>
+                                <div>
+                                    <button className="btn btn-danger">Delete</button>
+                                    {ReactDOM.createPortal(<h1>Hola no estoy qui</h1>, 
+                                     document.getElementById('modal')
+                                     )}
+                                </div>
                             </div>
                         </div>
                     </div>
