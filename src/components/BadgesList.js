@@ -8,19 +8,17 @@ class BadgesListItem extends React.Component {
     render() {
       return (
         <div className="badge__container">
-          <Gravatar
-            className="badge__container-avatar"
-            email={this.props.badge.email}
-          />
-  
-          <div className="badge__container-info" >
-            <strong className="name">
-              {this.props.badge.firstName} {this.props.badge.lastName}
-            </strong>
-            <br />@{this.props.badge.twitter}
-            <br />
-            {this.props.badge.jobTitle}
-          </div>
+            <Gravatar 
+               className="badge__container-avatar"
+               email={this.props.badge.email}
+            />
+            <div className="badge__container-info">
+                 <p className="name">
+                    {this.props.badge.firstName} {this.props.badge.lastName}
+                </p>
+                <p><img className="twitter-icon" src="https://img.icons8.com/fluent/48/000000/twitter.png" alt="icono twitter"/><a className="twitter" href="/">@{this.props.badge.twitter}</a></p>
+                <p className="jobTitle">{this.props.badge.jobTitle}</p>
+            </div>
         </div>
       );
     }

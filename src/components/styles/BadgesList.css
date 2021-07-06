@@ -5,6 +5,7 @@
 .badge__container {
     width: 600px;
     min-width: 300px;
+    margin: 10px 0px;
     height: auto;
     display: flex;
     align-items: center;
